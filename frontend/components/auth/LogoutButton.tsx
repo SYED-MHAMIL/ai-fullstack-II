@@ -1,14 +1,14 @@
 'use client';
 
-import { signOut } from 'better-auth/client';
 import { useRouter } from 'next/navigation';
 
 export function LogoutButton() {
   const router = useRouter();
 
   const handleLogout = async () => {
+    // Mock logout - in real implementation, this would call the backend API
     try {
-      await signOut();
+      // For demo purposes, just redirect to home
       router.push('/');
       router.refresh();
     } catch (error) {

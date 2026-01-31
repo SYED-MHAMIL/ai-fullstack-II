@@ -1,13 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { Task } from '@/types/task';
 import { useRouter } from 'next/navigation';
-import { useSession } from 'better-auth/react';
 
 export function TaskForm() {
   const router = useRouter();
-  const { data: session } = useSession();
 
   const [formData, setFormData] = useState({
     title: '',
@@ -40,7 +37,7 @@ export function TaskForm() {
       console.log('Creating task:', {
         ...formData,
         completed: false,
-        userId: session?.user?.id
+        userId: 'user-123' // Mock user ID
       });
 
       // Reset form

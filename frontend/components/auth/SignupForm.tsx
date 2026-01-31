@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { signUp } from 'better-auth/client';
 import { useRouter } from 'next/navigation';
 
 export function SignupForm() {
@@ -24,19 +23,14 @@ export function SignupForm() {
       return;
     }
 
+    // Mock signup - in real implementation, this would call the backend API
     try {
-      const response = await signUp({
-        email,
-        password,
-        name,
-      });
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 500));
 
-      if (response?.error) {
-        setError(response.error.message || 'An error occurred during sign up');
-      } else {
-        router.push('/tasks');
-        router.refresh();
-      }
+      // For demo purposes, just redirect to tasks
+      router.push('/tasks');
+      router.refresh();
     } catch (err) {
       setError('An unexpected error occurred');
       console.error(err);

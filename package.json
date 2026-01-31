@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "better-auth": "^1.4.18"
+  }
+}

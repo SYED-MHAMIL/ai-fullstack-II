@@ -4,10 +4,8 @@ import { useState, useEffect } from 'react';
 import { Task } from '@/types/task';
 import { TaskItem } from '@/components/tasks/TaskItem';
 import Link from 'next/link';
-import { useSession } from 'better-auth/react';
 
 export function TaskList() {
-  const { data: session } = useSession();
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -27,7 +25,7 @@ export function TaskList() {
             createdAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
             dueDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 days from now
             priority: 'High',
-            userId: session?.user?.id || 'user-123'
+            userId: 'user-123'
           },
           {
             id: '2',
@@ -37,7 +35,7 @@ export function TaskList() {
             createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 days ago
             dueDate: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
             priority: 'Medium',
-            userId: session?.user?.id || 'user-123'
+            userId: 'user-123'
           },
           {
             id: '3',
@@ -47,7 +45,7 @@ export function TaskList() {
             createdAt: new Date().toISOString(), // now
             dueDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // 7 days from now
             priority: 'Low',
-            userId: session?.user?.id || 'user-123'
+            userId: 'user-123'
           }
         ];
 
@@ -60,10 +58,9 @@ export function TaskList() {
       }
     };
 
-    if (session?.user) {
-      fetchTasks();
-    }
-  }, [session]);
+    // Fetch tasks regardless of session since we're using mock data
+    fetchTasks();
+  }, []);
 
   if (loading) {
     return (
