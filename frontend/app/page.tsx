@@ -4,39 +4,29 @@ import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <h1 className="text-xl font-semibold text-gray-900">Todo App</h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link href="/auth/login" className="text-indigo-600 hover:text-indigo-900">
-                Log in
-              </Link>
-              <Link href="/auth/signup" className="ml-4 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
-                Sign up
-              </Link>
-            </div>
-          </div>
+    <main className="flex-1 flex items-center justify-center bg-gray-50">
+      <div className="max-w-md w-full space-y-8 text-center px-4">
+        <h1 className="text-4xl font-extrabold text-gray-900">
+          Welcome to Todo App
+        </h1>
+        <p className="text-lg text-gray-600">
+          Organize your tasks efficiently and stay productive.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <Link
+            href="/auth/login"
+            className="px-6 py-3 text-indigo-600 border border-indigo-600 rounded-md hover:bg-indigo-50 font-medium"
+          >
+            Log in
+          </Link>
+          <Link
+            href="/auth/signup"
+            className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 font-medium"
+          >
+            Sign up
+          </Link>
         </div>
-      </nav>
-
-      {/* Main Content */}
-      <main className="flex-grow flex items-center justify-center">
-        <div className="max-w-md w-full space-y-8">
-          <div className="text-center">
-            <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-              Welcome to the Todo App
-            </h2>
-            <p className="mt-2 text-gray-600">
-              Please sign in to manage your tasks.
-            </p>
-          </div>
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
